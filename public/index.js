@@ -10,37 +10,35 @@ const showTasks = async() => {
 
     try {
         const {
-            data: { tasks },
+            data: { products },
         } = await axios.get('/api/v1/products')
-        if (tasks.length < 1) {
+        if (products.length < 1) {
             container.innerHTML = '<h5 class="empty-list">No tasks in your list</h5>'
 
             return
         }
-        const allTasks = tasks
-            .map((task) => {
-                const { completed, _id: taskID, name } = task
-                return `<div class="single-task ${completed && 'task-completed'}">
-        <h5><span><i class="far fa-check-circle"></i></span>${name}</h5>
-        <div class="task-links">
-        <!-- edit link -->
-        <a href="task.html?id=${taskID}"  class="edit-link">
-        <i class="fas fa-edit"></i>
-        </a>
-        <!-- delete btn -->
-        <button type="button" class="delete-btn" data-id="${taskID}">
-        <i class="fas fa-trash"></i>
-        </button>
-        </div>
-        </div>`
+        const allProducts = products
+            .map((product) => {
+                const { price, rating, createAt, company, name } = product
+                return `
+            <div class="product">
+            <h1 class="product-name">${name}</h1>
+            <h3 class="product-company">Brand:${company}</h3>
+            <h2 class="product-rating">${rating}Star</h2>
+            <h2 class="product-price">${price}Eur</h2>
+            <h3 class="product-createdat">${createAt}</h3>
+            </div>
+           `
             })
             .join('')
-        tasksDOM.innerHTML = allTasks
+
+
+        container.innerHTML = allProducts
     } catch (error) {
-        tasksDOM.innerHTML =
+        container.innerHTML =
             '<h5 class="empty-list">There was an error, please try later....</h5>'
     }
-    loadingDOM.style.visibility = 'hidden'
+
 }
 
 showTasks()
