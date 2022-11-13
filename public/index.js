@@ -22,11 +22,13 @@ const showTasks = async() => {
                 const { price, rating, createAt, company, name } = product
                 return `
             <div class="product">
+            <div class="product-container">
             <h1 class="product-name">${name}</h1>
             <h3 class="product-company">Brand:${company}</h3>
             <h2 class="product-rating">${rating}Star</h2>
             <h2 class="product-price">${price}Eur</h2>
             <h3 class="product-createdat">${createAt}</h3>
+             </div>
             </div>
            `
             })

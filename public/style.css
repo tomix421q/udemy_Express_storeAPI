@@ -1,14 +1,14 @@
+*,
+body,
 html {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    background-color: bisque;
 }
 
 .container {
     display: flex;
     flex-wrap: wrap;
-    position: relative;
     width: 1000px;
     height: 1000px;
     background-color: aliceblue;
@@ -18,7 +18,7 @@ html {
 }
 
 .product {
-    padding: 10px;
+    position: relative;
     width: 190px;
     height: 250px;
     background-color: tomato;
@@ -26,4 +26,9 @@ html {
     margin: 20px;
     font-size: 15px;
     text-align: center;
+}
+
+.product-container {
+    position: absolute;
+    padding: 10px;
 }
